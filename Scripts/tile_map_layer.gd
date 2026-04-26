@@ -1,36 +1,38 @@
 extends TileMapLayer
 
+# Editor modes
+var adding_tokens = true;
+var moving_tokens = false;
+
+# Tokens
 var token_tempalte = preload("res://Entities/token.tscn")
 var token_data: TokenData
 
 func _unhandled_input(event: InputEvent) -> void:
-	move_selected_to_target_cell(event)
-
-# selected = token, cell = grid cell
-func move_selected_to_target_cell(event: InputEvent):
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed:
-			var cell : Vector2i = self.local_to_map((self as Node2D).to_local(event.position))
+			var position : Vector2i = self.local_to_map((self as Node2D).to_local(event.position))
 			
 			# only transfer if there is a grid there
-			if self.get_cell_source_id(cell) == -1:
+			if self.get_cell_source_id(position) == -1:
 				return
 				
-			print(cell)
-			
-			# two separate things: spawning and moving
-			if token_data == null:
-				return
-			
-			spawn_token(cell)
-
+			if adding_tokens:
+				spawn_token(position)
+			elif moving_tokens:
+				move_selected_to_target_cell(position)
+				
 # ===== Moving Tokens =====
-
-
+# selected = token, cell = grid cell
+func move_selected_to_target_cell(targetPosition: Vector2i) -> void:
+	return
 			
 # ===== New Tokens =====
-
 func spawn_token(position: Vector2i) -> void:
+	if token_data == null:
+		print("cannot add a token without choosing token's data first.")
+		return
+				
 	var token = token_tempalte.instantiate()
 	token.position = self.map_to_local(position)
 	add_child(token)
