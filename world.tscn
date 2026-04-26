@@ -1,0 +1,41 @@
+[gd_scene format=4 uid="uid://c4d68koasfh7p"]
+
+[ext_resource type="Script" uid="uid://c3oc5qyrcxkjs" path="res://Scripts/tile_map_layer.gd" id="1_f3sb7"]
+[ext_resource type="Texture2D" uid="uid://dl2jm5i13nvvt" path="res://pixil-frame-0.png" id="1_fj7yv"]
+[ext_resource type="Resource" uid="uid://ccqxvtpepjpsd" path="res://Scripts/Resources/goblin.tres" id="4_aqk2v"]
+[ext_resource type="Script" uid="uid://bi1byh2itkg0t" path="res://button.gd" id="5_036b0"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlwt5"]
+texture = ExtResource("1_fj7yv")
+texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_aqk2v"]
+
+[sub_resource type="TileSet" id="TileSet_gv5m4"]
+tile_size = Vector2i(64, 64)
+sources/0 = SubResource("TileSetAtlasSource_tlwt5")
+sources/1 = SubResource("TileSetScenesCollectionSource_aqk2v")
+
+[node name="World" type="Node2D" unique_id=1332943441]
+
+[node name="Grid" type="Node2D" parent="." unique_id=1033833114]
+position = Vector2(320, 160)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Grid" unique_id=1374609486]
+tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAEAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_gv5m4")
+script = ExtResource("1_f3sb7")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1222178340]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2085399120]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=1421471831]
+layout_mode = 2
+script = ExtResource("5_036b0")
+data = ExtResource("4_aqk2v")
+
+[connection signal="token_data_selected" from="VBoxContainer/Button" to="Grid/TileMapLayer" method="_on_button_token_data_selected"]

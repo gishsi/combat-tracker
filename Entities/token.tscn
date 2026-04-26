@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dasknhocjvpvx"]
+
+[ext_resource type="Script" uid="uid://clvqlshy3rio" path="res://Scripts/token.gd" id="1_dgvu4"]
+[ext_resource type="Texture2D" uid="uid://ce1f3bsbij7je" path="res://icon.svg" id="2_fvwv8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_036b0"]
+size = Vector2(30, 30)
+
+[node name="Token" type="Area2D" unique_id=397975223]
+script = ExtResource("1_dgvu4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=686607371]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_fvwv8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=550053403]
+shape = SubResource("RectangleShape2D_036b0")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
