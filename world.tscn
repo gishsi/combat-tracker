@@ -38,4 +38,20 @@ layout_mode = 2
 script = ExtResource("5_036b0")
 data = ExtResource("4_aqk2v")
 
+[node name="VBoxContainer2" type="VBoxContainer" parent="." unique_id=1633373008]
+offset_left = 1027.0
+offset_top = 11.0
+offset_right = 1134.0
+offset_bottom = 77.0
+
+[node name="AddTokensButton" type="Button" parent="VBoxContainer2" unique_id=1511129045]
+layout_mode = 2
+text = "Add tokens"
+
+[node name="MoveTokensButton" type="Button" parent="VBoxContainer2" unique_id=1486764248]
+layout_mode = 2
+text = "Move tokens"
+
 [connection signal="token_data_selected" from="VBoxContainer/Button" to="Grid/TileMapLayer" method="_on_button_token_data_selected"]
+[connection signal="pressed" from="VBoxContainer2/AddTokensButton" to="Grid/TileMapLayer" method="_on_add_tokens_button_pressed"]
+[connection signal="pressed" from="VBoxContainer2/MoveTokensButton" to="Grid/TileMapLayer" method="_on_move_tokens_button_pressed"]

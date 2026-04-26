@@ -30,8 +30,13 @@ func move_selected_to_target_cell(targetPosition: Vector2i) -> void:
 	if !moving_tokens:
 		return
 	
+	if movable_token == null:
+		print("cannot move a token without choosing choosing it first.")
+		return
+	
 	movable_token.position = self.map_to_local(targetPosition)
 	
+	# todo: make sure this is a good idea and its not actually removing important data (by ref, or by copy?)
 	movable_token = null
 
 func token_selected_event(token: Node2D):
@@ -39,7 +44,7 @@ func token_selected_event(token: Node2D):
 	
 # ===== New Tokens =====
 func spawn_token(position: Vector2i) -> void:
-	if adding_tokens:
+	if !adding_tokens:
 		return
 		
 	if token_data == null:
@@ -57,3 +62,11 @@ func spawn_token(position: Vector2i) -> void:
 
 func _on_button_token_data_selected(data: TokenData) -> void:
 	token_data = data
+
+func _on_add_tokens_button_pressed() -> void:
+	adding_tokens = true
+	moving_tokens = false
+
+func _on_move_tokens_button_pressed() -> void:
+	adding_tokens = false
+	moving_tokens = true
