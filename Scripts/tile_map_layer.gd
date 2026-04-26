@@ -8,6 +8,8 @@ var moving_tokens = false;
 var token_tempalte = preload("res://Entities/token.tscn")
 var token_data: TokenData
 
+var movable_token: Node2D;
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed:
@@ -25,17 +27,31 @@ func _unhandled_input(event: InputEvent) -> void:
 # ===== Moving Tokens =====
 # selected = token, cell = grid cell
 func move_selected_to_target_cell(targetPosition: Vector2i) -> void:
-	return
-			
+	if !moving_tokens:
+		return
+	
+	movable_token.position = self.map_to_local(targetPosition)
+	
+	movable_token = null
+
+func token_selected_event(token: Node2D):
+	movable_token = token
+	
 # ===== New Tokens =====
 func spawn_token(position: Vector2i) -> void:
+	if adding_tokens:
+		return
+		
 	if token_data == null:
 		print("cannot add a token without choosing token's data first.")
 		return
 				
 	var token = token_tempalte.instantiate()
+	token.name = token_data.name
 	token.position = self.map_to_local(position)
 	add_child(token)
+	
+	token.token_selected.connect(token_selected_event)
 	
 	token_data = null
 
