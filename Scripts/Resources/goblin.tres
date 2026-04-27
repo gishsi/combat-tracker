@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="TokenData" format=3 uid="uid://ccqxvtpepjpsd"]
-
-[ext_resource type="Script" uid="uid://jrxw1ffhook0" path="res://Scripts/Resources/token_data.gd" id="1_4hpux"]
-
-[resource]
-script = ExtResource("1_4hpux")
-name = "Goblin"

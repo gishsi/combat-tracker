@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="TokenData" format=3 uid="uid://b2s8wi63clypi"]
+
+[ext_resource type="Script" uid="uid://jrxw1ffhook0" path="res://Scripts/token_data.gd" id="1_c4df1"]
+[ext_resource type="Texture2D" uid="uid://df4rpj15ipkws" path="res://Content/Art/Tokens/FireElemental_001.png" id="2_57y3j"]
+
+[resource]
+script = ExtResource("1_c4df1")
+name = "Fire Elemental"
+sprite = ExtResource("2_57y3j")

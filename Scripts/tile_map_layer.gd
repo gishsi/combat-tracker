@@ -65,9 +65,11 @@ func spawn_token(position: Vector2i) -> void:
 	var token = token_tempalte.instantiate()
 	token.name = token_data.name
 	token.position = self.map_to_local(position)
-	add_child(token)
-	
 	token.token_selected.connect(token_selected_event)
+	token.token_data = token_data
+
+	add_child(token)
+		
 	grid.set(str(position), token.name) 
 	
 	token_data = null

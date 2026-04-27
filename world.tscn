@@ -3,8 +3,12 @@
 [ext_resource type="Script" uid="uid://cus2e0uaittm1" path="res://Scripts/world.gd" id="1_036b0"]
 [ext_resource type="Script" uid="uid://c3oc5qyrcxkjs" path="res://Scripts/tile_map_layer.gd" id="1_f3sb7"]
 [ext_resource type="Texture2D" uid="uid://dl2jm5i13nvvt" path="res://pixil-frame-0.png" id="1_fj7yv"]
-[ext_resource type="Resource" uid="uid://ccqxvtpepjpsd" path="res://Scripts/Resources/goblin.tres" id="4_aqk2v"]
+[ext_resource type="Resource" uid="uid://ccqxvtpepjpsd" path="res://Content/Art/Tokens/skeleton.tres" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://dqit44gp3e05r" path="res://Entities/token_button.tscn" id="4_dwbse"]
+[ext_resource type="Script" uid="uid://dn375vxm2sviw" path="res://Scripts/tokens_list_container.gd" id="4_pkg7o"]
 [ext_resource type="Script" uid="uid://bi1byh2itkg0t" path="res://button.gd" id="5_036b0"]
+[ext_resource type="Script" uid="uid://jrxw1ffhook0" path="res://Scripts/token_data.gd" id="5_ioo17"]
+[ext_resource type="Resource" uid="uid://b2s8wi63clypi" path="res://Content/Art/Tokens/fire_elemental.tres" id="6_dwbse"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlwt5"]
 texture = ExtResource("1_fj7yv")
@@ -36,11 +40,16 @@ offset_left = 37.0
 offset_top = 34.0
 offset_right = 77.0
 offset_bottom = 74.0
+script = ExtResource("4_pkg7o")
+tokens = Array[ExtResource("5_ioo17")]([ExtResource("4_aqk2v"), ExtResource("6_dwbse")])
 
-[node name="Button" type="Button" parent="TokensListContainer" unique_id=1421471831]
+[node name="SkeletonButton" parent="TokensListContainer" unique_id=1681566808 instance=ExtResource("4_dwbse")]
+layout_mode = 2
+
+[node name="FireElementalButton" type="Button" parent="TokensListContainer" unique_id=853891601]
 layout_mode = 2
 script = ExtResource("5_036b0")
-data = ExtResource("4_aqk2v")
+data = ExtResource("6_dwbse")
 
 [node name="ModeButtonsContainer" type="VBoxContainer" parent="." unique_id=1633373008]
 offset_left = 997.0
@@ -63,7 +72,8 @@ offset_bottom = 675.0
 scale = Vector2(28.8, 0.36)
 color = Color(0.39215687, 0.58431375, 0.92941177, 1)
 
-[connection signal="token_data_selected" from="TokensListContainer/Button" to="Grid/TileMapLayer" method="_on_button_token_data_selected"]
+[connection signal="token_data_selected" from="TokensListContainer/SkeletonButton" to="Grid/TileMapLayer" method="_on_button_token_data_selected"]
+[connection signal="token_data_selected" from="TokensListContainer/FireElementalButton" to="Grid/TileMapLayer" method="_on_button_token_data_selected"]
 [connection signal="pressed" from="ModeButtonsContainer/AddTokensButton" to="." method="_on_add_tokens_button_pressed"]
 [connection signal="pressed" from="ModeButtonsContainer/AddTokensButton" to="Grid/TileMapLayer" method="_on_add_tokens_button_pressed"]
 [connection signal="pressed" from="ModeButtonsContainer/MoveTokensButton" to="." method="_on_move_tokens_button_pressed"]
