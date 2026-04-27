@@ -10,6 +10,9 @@ var token_data: TokenData
 
 var movable_token: Node2D;
 
+# Grid
+var grid = {}
+
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT and event.pressed:
@@ -34,12 +37,20 @@ func move_selected_to_target_cell(targetPosition: Vector2i) -> void:
 		print("cannot move a token without choosing choosing it first.")
 		return
 	
-	movable_token.position = self.map_to_local(targetPosition)
+	# why do we need this? grid is how we prevent overlapping the enemies
+	if grid.has(str(targetPosition)) and grid[str(targetPosition)] != null:
+		print(str(targetPosition.x) + ", " + str(targetPosition.y) + " space is already occupied")
+		return
 	
-	# todo: make sure this is a good idea and its not actually removing important data (by ref, or by copy?)
+	grid.set(str(self.local_to_map(movable_token.position)), null)
+	movable_token.position = self.map_to_local(targetPosition)
+	grid.set(str(targetPosition), movable_token.name)
 	movable_token = null
 
 func token_selected_event(token: Node2D):
+	if !moving_tokens or movable_token != null:
+		return
+		
 	movable_token = token
 	
 # ===== New Tokens =====
@@ -57,6 +68,7 @@ func spawn_token(position: Vector2i) -> void:
 	add_child(token)
 	
 	token.token_selected.connect(token_selected_event)
+	grid.set(str(position), token.name) 
 	
 	token_data = null
 
