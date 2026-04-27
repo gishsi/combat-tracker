@@ -18,18 +18,11 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_tlwt5")
 sources/1 = SubResource("TileSetScenesCollectionSource_aqk2v")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_036b0"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-
 [node name="World" type="Node2D" unique_id=1332943441]
 script = ExtResource("1_036b0")
 
 [node name="Grid" type="Node2D" parent="." unique_id=1033833114]
-position = Vector2(320, 160)
+position = Vector2(379, 197)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Grid" unique_id=1374609486]
 tile_map_data = PackedByteArray("AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAACAAAAAAAAAAAAAAACAAEAAAAAAAAAAAACAAIAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAIAAAAAAAAAAAABAAEAAAAAAAAAAAADAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAADAAEAAAAAAAAAAAAEAAEAAAAAAAAAAAAFAAEAAAAAAAAAAAADAAIAAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAEAAMAAAAAAAAAAAADAAMAAAAAAAAAAAACAAMAAAAAAAAAAAABAAMAAAAAAAAAAAAAAAMAAAAAAAAAAAA=")
@@ -63,21 +56,15 @@ text = "Add tokens"
 layout_mode = 2
 text = "Move tokens"
 
-[node name="Control" type="Control" parent="." unique_id=1926028305]
-layout_mode = 3
-anchors_preset = 0
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1089050105]
+offset_top = 635.0
 offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Panel" type="Panel" parent="Control" unique_id=1115198345]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_036b0")
+offset_bottom = 675.0
+scale = Vector2(28.8, 0.36)
+color = Color(0.39215687, 0.58431375, 0.92941177, 1)
 
 [connection signal="token_data_selected" from="TokensListContainer/Button" to="Grid/TileMapLayer" method="_on_button_token_data_selected"]
+[connection signal="pressed" from="ModeButtonsContainer/AddTokensButton" to="." method="_on_add_tokens_button_pressed"]
 [connection signal="pressed" from="ModeButtonsContainer/AddTokensButton" to="Grid/TileMapLayer" method="_on_add_tokens_button_pressed"]
+[connection signal="pressed" from="ModeButtonsContainer/MoveTokensButton" to="." method="_on_move_tokens_button_pressed"]
 [connection signal="pressed" from="ModeButtonsContainer/MoveTokensButton" to="Grid/TileMapLayer" method="_on_move_tokens_button_pressed"]
