@@ -37,7 +37,7 @@ func move_selected_to_target_cell(targetPosition: Vector2i) -> void:
 		print("cannot move a token without choosing choosing it first.")
 		return
 	
-	# why do we need this? grid is how we prevent overlapping the enemies
+	# why do we need this? grid is how we prevent overlapping the tokens on the map
 	if grid.has(str(targetPosition)) and grid[str(targetPosition)] != null:
 		print(str(targetPosition.x) + ", " + str(targetPosition.y) + " space is already occupied")
 		return
