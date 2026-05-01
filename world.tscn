@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bi1byh2itkg0t" path="res://button.gd" id="5_036b0"]
 [ext_resource type="Script" uid="uid://jrxw1ffhook0" path="res://Scripts/token_data.gd" id="5_ioo17"]
 [ext_resource type="Resource" uid="uid://b2s8wi63clypi" path="res://Content/Art/Tokens/fire_elemental.tres" id="6_dwbse"]
+[ext_resource type="Script" uid="uid://d3e78pmboq58j" path="res://context_menu.gd" id="10_wse8f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlwt5"]
 texture = ExtResource("1_fj7yv")
@@ -72,6 +73,32 @@ offset_bottom = 675.0
 scale = Vector2(28.8, 0.36)
 color = Color(0.39215687, 0.58431375, 0.92941177, 1)
 
+[node name="Context Menu" type="VBoxContainer" parent="." unique_id=55454557]
+offset_left = 946.0
+offset_top = 409.0
+offset_right = 1122.0
+offset_bottom = 480.0
+script = ExtResource("10_wse8f")
+
+[node name="NameLabel" type="Label" parent="Context Menu" unique_id=1758718429]
+layout_mode = 2
+text = "[PH] Skeleton"
+
+[node name="HpLabel" type="Label" parent="Context Menu" unique_id=851329455]
+layout_mode = 2
+text = "HP : 10"
+
+[node name="ApplyStatusButton" type="Button" parent="Context Menu" unique_id=1728787012]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Apply status"
+
+[node name="RemoveTokenButton" type="Button" parent="Context Menu" unique_id=1383673504]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Remove token"
+
+[connection signal="connect_token" from="Grid/TileMapLayer" to="Context Menu" method="_on_tile_map_layer_connect_token"]
 [connection signal="token_data_selected" from="TokensListContainer/SkeletonButton" to="Grid/TileMapLayer" method="_on_button_token_data_selected"]
 [connection signal="token_data_selected" from="TokensListContainer/FireElementalButton" to="Grid/TileMapLayer" method="_on_button_token_data_selected"]
 [connection signal="pressed" from="ModeButtonsContainer/AddTokensButton" to="." method="_on_add_tokens_button_pressed"]

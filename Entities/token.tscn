@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dasknhocjvpvx"]
 
 [ext_resource type="Script" uid="uid://clvqlshy3rio" path="res://Scripts/token.gd" id="1_dgvu4"]
-[ext_resource type="Script" uid="uid://d3e78pmboq58j" path="res://context_menu.gd" id="2_dgvu4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_036b0"]
 size = Vector2(30, 30)
@@ -14,21 +13,5 @@ scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=550053403]
 shape = SubResource("RectangleShape2D_036b0")
-
-[node name="Context Menu" type="VBoxContainer" parent="." unique_id=1167886305]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("2_dgvu4")
-
-[node name="Button" type="Button" parent="Context Menu" unique_id=1025364318]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Apply status"
-
-[node name="Button2" type="Button" parent="Context Menu" unique_id=1145416863]
-layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Remove token"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

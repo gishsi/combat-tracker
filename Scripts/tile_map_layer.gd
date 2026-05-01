@@ -9,6 +9,7 @@ var token_tempalte = preload("res://Entities/token.tscn")
 var token_data: TokenData
 
 var movable_token: Node2D;
+signal connect_token(token)
 
 # Grid
 var grid = {}
@@ -48,6 +49,8 @@ func move_selected_to_target_cell(targetPosition: Vector2i) -> void:
 	movable_token = null
 
 func token_selected_event(token: Node2D):
+	connect_token.emit(token)
+	
 	if !moving_tokens or movable_token != null:
 		return
 		
@@ -67,12 +70,14 @@ func spawn_token(position: Vector2i) -> void:
 	token.position = self.map_to_local(position)
 	token.token_selected.connect(token_selected_event)
 	token.token_data = token_data
-
+	
 	add_child(token)
 		
 	grid.set(str(position), token.name) 
 	
 	token_data = null
+
+
 
 func _on_button_token_data_selected(data: TokenData) -> void:
 	token_data = data
