@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dqit44gp3e05r"]
 
-[ext_resource type="Script" uid="uid://bi1byh2itkg0t" path="res://button.gd" id="1_bu06e"]
-[ext_resource type="Resource" uid="uid://ccqxvtpepjpsd" path="res://Content/Art/Tokens/skeleton.tres" id="2_ioxbo"]
+[ext_resource type="Script" uid="uid://bi1byh2itkg0t" path="res://Scripts/button.gd" id="1_bu06e"]
+[ext_resource type="Resource" uid="uid://ccqxvtpepjpsd" path="res://Content/Entities/skeleton.tres" id="2_ioxbo"]
 
 [node name="TokenButton" type="Button" unique_id=1681566808]
 script = ExtResource("1_bu06e")

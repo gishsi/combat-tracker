@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="TokenData" format=3 uid="uid://diptrmhicdhtu"]
+
+[ext_resource type="Script" uid="uid://jrxw1ffhook0" path="res://Scripts/token_data.gd" id="1_uw0h1"]
+[ext_resource type="Texture2D" uid="uid://bqj2jvl3m5cv7" path="res://Content/Art/Tokens/goblin_fighter.png" id="2_h0173"]
+
+[resource]
+script = ExtResource("1_uw0h1")
+name = "Goblin"
+sprite = ExtResource("2_h0173")
+metadata/_custom_type_script = "uid://jrxw1ffhook0"

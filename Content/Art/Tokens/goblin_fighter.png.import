@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://br8b8bio8mf6e"
-valid=false
+uid="uid://bqj2jvl3m5cv7"
+path="res://.godot/imported/goblin_fighter.png-141f052be4e377885100bba8a85d0db3.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://mapa.jpg"
+source_file="res://Content/Art/Tokens/goblin_fighter.png"
+dest_files=["res://.godot/imported/goblin_fighter.png-141f052be4e377885100bba8a85d0db3.ctex"]
 
 [params]
 

@@ -13,11 +13,18 @@ config_version=5
 config/name="combat-tracker"
 run/main_scene="uid://c4d68koasfh7p"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://icon.svg"
+
+[autoload]
+
+TokensDataSource="*uid://duen5lcvvasj0"
 
 [display]
 
 window/stretch/mode="canvas_items"
+
+[gui]
+
+theme/custom_font="uid://kmnox3cl5nu8"
 
 [physics]
 
@@ -27,3 +34,4 @@ window/stretch/mode="canvas_items"
 
 textures/canvas_textures/default_texture_filter=0
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.1254902, 0.07058824, 0.03137255, 1)

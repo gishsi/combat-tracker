@@ -1,0 +1,160 @@
+[gd_scene format=3 uid="uid://c4d68koasfh7p"]
+
+[ext_resource type="Script" uid="uid://cwaomp5ys4lyl" path="res://Scripts/map_camera_2d.gd" id="1_0fj1v"]
+[ext_resource type="Script" uid="uid://sejxqrcsa72h" path="res://Scripts/grid.gd" id="2_ikia7"]
+[ext_resource type="PackedScene" uid="uid://cj00nhehkbt01" path="res://Scenes/Maps/road_forest_001.tscn" id="3_7yui6"]
+[ext_resource type="Script" uid="uid://dn375vxm2sviw" path="res://Scripts/tokens_list_container.gd" id="4_c5t2i"]
+[ext_resource type="StyleBox" uid="uid://cc7j8ndk36k21" path="res://Content/Art/UserInterface/panel_style_box.tres" id="4_e0ngr"]
+[ext_resource type="Script" uid="uid://jrxw1ffhook0" path="res://Scripts/token_data.gd" id="5_e0ngr"]
+[ext_resource type="Resource" uid="uid://ccqxvtpepjpsd" path="res://Content/Entities/skeleton.tres" id="6_kn0ld"]
+[ext_resource type="Resource" uid="uid://b2s8wi63clypi" path="res://Content/Entities/fire_elemental.tres" id="7_hgpy0"]
+[ext_resource type="Texture2D" uid="uid://crllogstj0cni" path="res://Content/Art/UserInterface/RectangleBox_96x96.png" id="8_7yui6"]
+[ext_resource type="Script" uid="uid://d3e78pmboq58j" path="res://Scripts/context_menu.gd" id="8_t2t4p"]
+[ext_resource type="Script" uid="uid://dcpd7nbg6jvrq" path="res://Scripts/remove_token_button.gd" id="9_0pcbe"]
+[ext_resource type="Script" uid="uid://cf32ersmrh4q1" path="res://Scripts/mode_indicator_color_rect.gd" id="10_axeuq"]
+[ext_resource type="Script" uid="uid://c8jwd5lv6lumi" path="res://Scripts/apply_status_option_button.gd" id="11_7yui6"]
+[ext_resource type="Resource" uid="uid://diptrmhicdhtu" path="res://Content/Entities/goblin_fighter.tres" id="14_e0ngr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e0ngr"]
+texture = ExtResource("8_7yui6")
+
+[sub_resource type="Theme" id="Theme_7yui6"]
+Panel/styles/panel = SubResource("StyleBoxTexture_e0ngr")
+
+[node name="World" type="Node2D" unique_id=1332943441]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=43249814]
+script = ExtResource("1_0fj1v")
+
+[node name="Grid" type="Node2D" parent="." unique_id=1033833114]
+position = Vector2(-172, -128)
+script = ExtResource("2_ikia7")
+
+[node name="TileMapLayer" parent="Grid" unique_id=630034210 instance=ExtResource("3_7yui6")]
+
+[node name="UserInterfaceCanvasLayer" type="CanvasLayer" parent="." unique_id=24482468]
+
+[node name="ModeIndicatorColorRect" type="ColorRect" parent="UserInterfaceCanvasLayer" unique_id=1089050105]
+offset_top = 635.0
+offset_right = 40.0
+offset_bottom = 675.0
+scale = Vector2(28.8, 0.36)
+color = Color(0.39215687, 0.58431375, 0.92941177, 1)
+script = ExtResource("10_axeuq")
+
+[node name="TokenContextContainer" type="PanelContainer" parent="UserInterfaceCanvasLayer" unique_id=333768538]
+offset_left = 930.0
+offset_top = 104.0
+offset_right = 1139.0
+offset_bottom = 236.0
+theme_override_styles/panel = ExtResource("4_e0ngr")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterfaceCanvasLayer/TokenContextContainer" unique_id=610544315]
+layout_mode = 2
+
+[node name="Context Menu" type="VBoxContainer" parent="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer" unique_id=55454557]
+layout_mode = 2
+theme = SubResource("Theme_7yui6")
+theme_override_constants/separation = 7
+script = ExtResource("8_t2t4p")
+
+[node name="NameLabel" type="Label" parent="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer/Context Menu" unique_id=1758718429]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "[PH] Skeleton "
+autowrap_mode = 2
+
+[node name="Apply status" type="Label" parent="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer/Context Menu" unique_id=2116190059]
+layout_mode = 2
+text = "Apply status:"
+
+[node name="ApplyStatusOptionButton" type="OptionButton" parent="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer/Context Menu" unique_id=620909399]
+layout_mode = 2
+selected = 0
+fit_to_longest_item = false
+item_count = 16
+popup/item_0/text = "None"
+popup/item_0/id = 0
+popup/item_1/text = "Blinded"
+popup/item_1/id = 1
+popup/item_2/text = "Charmed"
+popup/item_2/id = 2
+popup/item_3/text = "Deafened"
+popup/item_3/id = 3
+popup/item_4/text = "Frightened"
+popup/item_4/id = 4
+popup/item_5/text = "Grappled"
+popup/item_5/id = 5
+popup/item_6/text = "Incapacitated"
+popup/item_6/id = 6
+popup/item_7/text = "Invisible"
+popup/item_7/id = 7
+popup/item_8/text = "Paralyzed"
+popup/item_8/id = 8
+popup/item_9/text = "Petrified"
+popup/item_9/id = 9
+popup/item_10/text = "Poisoned"
+popup/item_10/id = 10
+popup/item_11/text = "Prone"
+popup/item_11/id = 11
+popup/item_12/text = "Restrained"
+popup/item_12/id = 12
+popup/item_13/text = "Stunned"
+popup/item_13/id = 13
+popup/item_14/text = "Unconscious"
+popup/item_14/id = 14
+popup/item_15/text = "Exhaustion"
+popup/item_15/id = 15
+script = ExtResource("11_7yui6")
+
+[node name="RemoveTokenButton" type="Button" parent="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer/Context Menu" unique_id=1383673504]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Remove token"
+script = ExtResource("9_0pcbe")
+
+[node name="ModeButtonsContainer" type="PanelContainer" parent="UserInterfaceCanvasLayer" unique_id=831952687]
+offset_left = 948.0
+offset_top = 10.0
+offset_right = 1137.0
+offset_bottom = 84.0
+theme_override_styles/panel = ExtResource("4_e0ngr")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterfaceCanvasLayer/ModeButtonsContainer" unique_id=1689186464]
+layout_mode = 2
+
+[node name="ModeButtonsContainer" type="VBoxContainer" parent="UserInterfaceCanvasLayer/ModeButtonsContainer/MarginContainer" unique_id=1633373008]
+layout_mode = 2
+
+[node name="AddTokensButton" type="Button" parent="UserInterfaceCanvasLayer/ModeButtonsContainer/MarginContainer/ModeButtonsContainer" unique_id=1511129045]
+layout_mode = 2
+text = "Add tokens"
+
+[node name="MoveTokensButton" type="Button" parent="UserInterfaceCanvasLayer/ModeButtonsContainer/MarginContainer/ModeButtonsContainer" unique_id=1486764248]
+layout_mode = 2
+text = "Move tokens"
+
+[node name="TokenListContainer" type="PanelContainer" parent="UserInterfaceCanvasLayer" unique_id=1627373894]
+offset_left = 10.0
+offset_top = 9.0
+offset_right = 50.0
+offset_bottom = 49.0
+theme_override_styles/panel = ExtResource("4_e0ngr")
+
+[node name="MarginContainer" type="MarginContainer" parent="UserInterfaceCanvasLayer/TokenListContainer" unique_id=879341221]
+layout_mode = 2
+
+[node name="TokensListContainer" type="VBoxContainer" parent="UserInterfaceCanvasLayer/TokenListContainer/MarginContainer" unique_id=2085399120]
+layout_mode = 2
+script = ExtResource("4_c5t2i")
+tokens = Array[ExtResource("5_e0ngr")]([ExtResource("6_kn0ld"), ExtResource("7_hgpy0"), ExtResource("14_e0ngr")])
+
+[connection signal="token_content_changed" from="Grid" to="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer/Context Menu" method="_on_grid_token_content_changed"]
+[connection signal="item_selected" from="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer/Context Menu/ApplyStatusOptionButton" to="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer/Context Menu/ApplyStatusOptionButton" method="_on_item_selected"]
+[connection signal="status_applied" from="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer/Context Menu/ApplyStatusOptionButton" to="Grid" method="_on_apply_status_option_button_status_applied"]
+[connection signal="token_removed" from="UserInterfaceCanvasLayer/TokenContextContainer/MarginContainer/Context Menu/RemoveTokenButton" to="Grid" method="_on_remove_token_button_token_removed"]
+[connection signal="pressed" from="UserInterfaceCanvasLayer/ModeButtonsContainer/MarginContainer/ModeButtonsContainer/AddTokensButton" to="Grid" method="_on_add_tokens_button_pressed"]
+[connection signal="pressed" from="UserInterfaceCanvasLayer/ModeButtonsContainer/MarginContainer/ModeButtonsContainer/AddTokensButton" to="UserInterfaceCanvasLayer/ModeIndicatorColorRect" method="_on_add_tokens_button_pressed"]
+[connection signal="pressed" from="UserInterfaceCanvasLayer/ModeButtonsContainer/MarginContainer/ModeButtonsContainer/MoveTokensButton" to="Grid" method="_on_move_tokens_button_pressed"]
+[connection signal="pressed" from="UserInterfaceCanvasLayer/ModeButtonsContainer/MarginContainer/ModeButtonsContainer/MoveTokensButton" to="UserInterfaceCanvasLayer/ModeIndicatorColorRect" method="_on_move_tokens_button_pressed"]
+[connection signal="token_selection_button_pressed" from="UserInterfaceCanvasLayer/TokenListContainer/MarginContainer/TokensListContainer" to="Grid" method="_on_tokens_list_container_token_selection_button_pressed"]
