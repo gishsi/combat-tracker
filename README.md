@@ -2,6 +2,8 @@
 
 A simple combat tracker + map making DnD tool made in Godot for folk who don't want to overcomplicate their prep, but still want to track the tokens as battle continues!
 
+![Preview](tool.png)
+
 # 🏆 Attributions
 
 Art assets:
